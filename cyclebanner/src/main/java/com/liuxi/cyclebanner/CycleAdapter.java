@@ -1,4 +1,4 @@
-package com.liuxi.recyclerloopdemo.banner.cycle;
+package com.liuxi.cyclebanner;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,11 +15,11 @@ public abstract class CycleAdapter<M, T extends RecyclerView.ViewHolder> extends
 
     private CycleAdapterHelper mHelper = new CycleAdapterHelper();
 
-    abstract View createView(@NonNull ViewGroup viewGroup);
+    protected abstract View createView(@NonNull ViewGroup viewGroup);
 
-    abstract T createViewHolder(@NonNull View view);
+    protected abstract T createViewHolder(@NonNull View view);
 
-    abstract void onBind(T holder, M model, int position);
+    protected abstract void onBind(T holder, M model, int position);
 
     private List<M> mData;
 
@@ -46,7 +46,7 @@ public abstract class CycleAdapter<M, T extends RecyclerView.ViewHolder> extends
         mData = list;
     }
 
-    M getItemData(int position) {
+    protected M getItemData(int position) {
 
         if (mData == null) {
             return null;

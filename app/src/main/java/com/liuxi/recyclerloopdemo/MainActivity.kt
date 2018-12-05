@@ -1,61 +1,38 @@
 package com.liuxi.recyclerloopdemo
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.DisplayMetrics
-import android.view.WindowManager
-import com.liuxi.recyclerloopdemo.lib.PagerSnapScaleHelper
+import android.support.v7.widget.LinearLayoutManager
+import com.liuxi.cyclebanner.CycleBannerHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        fun getScreenWidth(context: Context): Int {
-            var wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            var outMetrics = DisplayMetrics()
-            wm.defaultDisplay.getMetrics(outMetrics);
-            return outMetrics.widthPixels
-        }
-
-        fun getScreenHeight(context: Context): Int {
-            var wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            var outMetrics = DisplayMetrics()
-            wm.defaultDisplay.getMetrics(outMetrics);
-            return outMetrics.heightPixels
-        }
-
-
-        /**
-         * dip转px
-         */
-        fun dip2px(context: Context, dpValue: Float): Int {
-            val scale = context.resources.displayMetrics.density
-            return (dpValue * scale + 0.5f).toInt()
-        }
-
-
-        /**
-         * convert sp to its equivalent px
-         *
-         * 将sp转换为px
-         */
-        fun sp2px(
-            context: Context
-            , spValue: Float
-        ): Int {
-            val fontScale = context.resources.displayMetrics.scaledDensity
-            return (spValue * fontScale + 0.5f).toInt()
-        }
-
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        recyclerView.adapter = ImageAdapter()
-        PagerSnapScaleHelper().attachToRecyclerView(recyclerView)
+        var layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = layoutManager
+        var adapter = ImageAdapter()
+        recyclerView.adapter = adapter
+        var cycleBannerHelper = CycleBannerHelper()
+        cycleBannerHelper.setFirstItemPos(200)
+        cycleBannerHelper.attachToRecyclerView(recyclerView)
+
+        adapter.setData(createData())
     }
+
+    private fun createData(): List<Model> {
+        var list = ArrayList<Model>()
+        list.add(Model(R.drawable.p1))
+        list.add(Model(R.drawable.p2))
+        list.add(Model(R.drawable.p3))
+        list.add(Model(R.drawable.p4))
+
+        return list
+    }
+
+    //grpc protobof
 
 
 }

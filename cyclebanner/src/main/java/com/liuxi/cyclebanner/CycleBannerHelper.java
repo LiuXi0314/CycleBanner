@@ -1,4 +1,4 @@
-package com.liuxi.recyclerloopdemo.banner.cycle;
+package com.liuxi.cyclebanner;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

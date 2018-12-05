@@ -1,4 +1,4 @@
-package com.liuxi.recyclerloopdemo.banner.cycle;
+package com.liuxi.cyclebanner;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
