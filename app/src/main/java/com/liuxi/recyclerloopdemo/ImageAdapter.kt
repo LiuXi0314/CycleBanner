@@ -1,6 +1,7 @@
 package com.liuxi.recyclerloopdemo
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ import com.liuxi.cyclebanner.CycleAdapter
  *
  *
  */
-class ImageAdapter : CycleAdapter<Model, ImageAdapter.Holder>() {
+class ImageAdapter : CycleAdapter<Int, ImageAdapter.Holder>() {
 
     override fun createView(parent: ViewGroup): View {
         return LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
@@ -25,10 +26,10 @@ class ImageAdapter : CycleAdapter<Model, ImageAdapter.Holder>() {
         return Holder(view)
     }
 
-    override fun onBind(holder: Holder?, model: Model?, position: Int) {
-        if(model!= null) {
-            (holder?.itemView as ImageView).setImageResource(model?.id)
-        }
+    override fun onBind(holder: Holder, model: Int, position: Int) {
+        var a = model
+        a = a+1
+        (holder.itemView as ImageView).setImageResource(model)
     }
 
     class Holder(view: View) : RecyclerView.ViewHolder(view) {

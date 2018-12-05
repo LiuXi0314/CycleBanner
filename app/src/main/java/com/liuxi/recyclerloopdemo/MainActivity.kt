@@ -13,22 +13,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.layoutManager = layoutManager
+
         var adapter = ImageAdapter()
         recyclerView.adapter = adapter
+        adapter.setData(createData())
         var cycleBannerHelper = CycleBannerHelper()
         cycleBannerHelper.setFirstItemPos(200)
         cycleBannerHelper.attachToRecyclerView(recyclerView)
 
-        adapter.setData(createData())
     }
 
-    private fun createData(): List<Model> {
-        var list = ArrayList<Model>()
-        list.add(Model(R.drawable.p1))
-        list.add(Model(R.drawable.p2))
-        list.add(Model(R.drawable.p3))
-        list.add(Model(R.drawable.p4))
-
+    private fun createData(): List<Int> {
+        var list = ArrayList<Int>()
+        list.add(R.drawable.p1)
+        list.add(R.drawable.p2)
+        list.add(R.drawable.p3)
+        list.add(R.drawable.p4)
         return list
     }
 

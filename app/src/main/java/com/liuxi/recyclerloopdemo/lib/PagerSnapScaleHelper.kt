@@ -8,10 +8,7 @@ package com.liuxi.recyclerloopdemo.lib
 //import android.util.Log
 //import android.view.View
 //
-///**
-// * 防止卡片在第一页和最后一页因无法"居中"而一直循环调用onScrollStateChanged-->SnapHelper.snapToTargetExistingView-->onScrollStateChanged
-// * Created by jameson on 9/3/16.
-// */
+
 //class PagerSnapScaleHelper(
 //    private val scale: Float = 0.8f,
 //    private val paddingVertical: Float = 5f,
