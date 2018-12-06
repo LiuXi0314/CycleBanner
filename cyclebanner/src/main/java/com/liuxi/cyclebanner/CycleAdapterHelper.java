@@ -9,8 +9,8 @@ import android.view.ViewGroup;
  * @Email xiaoxixizhizhi@gmail.com
  */
 public class CycleAdapterHelper {
-    public static int sPagePadding = 15;
-    public static int sShowLeftCardWidth = 15;
+    public static int sPagePadding = 6;
+    public static int sShowLeftCardWidth = 30;
 
     public void onCreateViewHolder(ViewGroup parent, View itemView) {
         RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) itemView.getLayoutParams();

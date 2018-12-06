@@ -27,8 +27,6 @@ class ImageAdapter : CycleAdapter<Int, ImageAdapter.Holder>() {
     }
 
     override fun onBind(holder: Holder, model: Int, position: Int) {
-        var a = model
-        a = a+1
         (holder.itemView as ImageView).setImageResource(model)
     }
 

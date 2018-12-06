@@ -3,7 +3,6 @@ package com.liuxi.cyclebanner;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -26,7 +25,7 @@ public class CycleBannerHelper {
     private int mOnePageWidth; // 滑动一页的距离
     private int mCardGalleryWidth;
 
-    private int mFirstItemPos;
+    private int mFirstItemPos = 200;
     private int mCurrentItemOffset;
 
     private CardLinearSnapHelper mLinearSnapHelper = new CardLinearSnapHelper();
@@ -42,7 +41,6 @@ public class CycleBannerHelper {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                // Log.e("TAG", "RecyclerView.OnScrollListener onScrollStateChanged");
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     mLinearSnapHelper.mNoNeedToScroll = getCurrentItem() == 0 ||
                             getCurrentItem() == mRecyclerView.getAdapter().getItemCount() - 2;
@@ -124,11 +122,6 @@ public class CycleBannerHelper {
             }
         });
     }
-
-    public void setFirstItemPos(int firstItemPos) {
-        this.mFirstItemPos = firstItemPos;
-    }
-
 
     /**
      * RecyclerView位移事件监听, view大小随位移事件变化

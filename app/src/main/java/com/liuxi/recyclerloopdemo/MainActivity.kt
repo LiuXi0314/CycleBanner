@@ -18,9 +18,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         adapter.setData(createData())
         var cycleBannerHelper = CycleBannerHelper()
-        cycleBannerHelper.setFirstItemPos(200)
         cycleBannerHelper.attachToRecyclerView(recyclerView)
-
     }
 
     private fun createData(): List<Int> {
@@ -34,5 +32,5 @@ class MainActivity : AppCompatActivity() {
 
     //grpc protobof
 
-
 }
+

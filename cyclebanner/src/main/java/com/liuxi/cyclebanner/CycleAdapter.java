@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,10 +35,10 @@ public abstract class CycleAdapter<M, T extends RecyclerView.ViewHolder> extends
     public void onBindViewHolder(@NonNull T holder, int position) {
         mHelper.onBindViewHolder(holder.itemView, position, getItemCount());
         M m = getItemData(position);
-        if (m == null){
+        if (m == null) {
             return;
         }
-        onBind(holder,m, position);
+        onBind(holder, m, position);
     }
 
     @Override
@@ -48,27 +47,18 @@ public abstract class CycleAdapter<M, T extends RecyclerView.ViewHolder> extends
     }
 
     public void setData(List<M> list) {
-       mData = list;
+        mData = list;
         notifyDataSetChanged();
     }
 
     protected M getItemData(int position) {
-
         int size = mData.size();
-        if (size <= 0 || size <= position) {
+        if (size <= 0) return null;
+        int i = position % size;
+        if (size <= i) {
             return null;
         }
-        return mData.get(position % size);
+        return mData.get(i);
     }
 
-
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 }
