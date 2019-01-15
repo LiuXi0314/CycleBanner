@@ -15,10 +15,12 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
 
         var adapter = ImageAdapter()
-        recyclerView.adapter = adapter
-        adapter.setData(createData())
+        recyclerView.setAdapter(adapter)
         var cycleBannerHelper = CycleBannerHelper()
         cycleBannerHelper.attachToRecyclerView(recyclerView)
+        adapter.setData(createData())
+        indicator.setCycleView(recyclerView)
+
     }
 
     private fun createData(): List<Int> {
@@ -29,8 +31,5 @@ class MainActivity : AppCompatActivity() {
         list.add(R.drawable.p4)
         return list
     }
-
-    //grpc protobof
-
 }
 

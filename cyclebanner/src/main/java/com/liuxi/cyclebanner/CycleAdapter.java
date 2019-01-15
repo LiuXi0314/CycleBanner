@@ -51,6 +51,10 @@ public abstract class CycleAdapter<M, T extends RecyclerView.ViewHolder> extends
         notifyDataSetChanged();
     }
 
+    public int getItemRealCount() {
+        return mData == null ? 0 : mData.size();
+    }
+
     protected M getItemData(int position) {
         int size = mData.size();
         if (size <= 0) return null;

@@ -25,4 +25,9 @@ public class CycleBanner extends FrameLayout {
     public CycleBanner(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
+    private void init() {
+
+    }
+
 }

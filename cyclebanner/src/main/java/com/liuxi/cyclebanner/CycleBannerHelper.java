@@ -49,8 +49,7 @@ public class CycleBannerHelper {
                         mCurrentItemOffset = 0;
                         mLastPos = getCurrentItem();
                         //认为是一次滑动停止 这里可以写滑动停止回调
-                        mRecyclerView.dispatchOnPageSelected(mLastPos);
-                        //Log.e("TAG", "滑动停止后最终位置为" + getCurrentItem());
+                        mRecyclerView.dispatchOnPageSelected(mLastPos % mRecyclerView.getAdapter().getItemRealCount());
                     }
                 } else {
                     mLinearSnapHelper.mNoNeedToScroll = false;

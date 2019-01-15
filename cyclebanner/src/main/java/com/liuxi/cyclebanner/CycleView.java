@@ -13,11 +13,13 @@ import java.util.List;
  * @Email xiaoxixizhizhi@gmail.com
  */
 public class CycleView extends RecyclerView {
+    private static final int INVALID_POINTER = -1;
     private static final float FLING_SCALE_DOWN_FACTOR = 0.5f; // 减速因子
     private static final int FLING_MAX_VELOCITY = 8000; // 最大顺时滑动速度
     private static boolean mEnableLimitVelocity = true; // 最大顺时滑动速度
     private List<OnPageChangeListener> mOnPageChangeListeners;
     private OnPageChangeListener mOnPageChangeListener;
+    private int mCurrentPage = INVALID_POINTER;
 
     public CycleView(Context context) {
         super(context);
@@ -35,8 +37,28 @@ public class CycleView extends RecyclerView {
         return mEnableLimitVelocity;
     }
 
-    public static void setmEnableLimitVelocity(boolean mEnableLimitVelocity) {
+    public static void setEnableLimitVelocity(boolean mEnableLimitVelocity) {
         mEnableLimitVelocity = mEnableLimitVelocity;
+    }
+
+    public int getCurrentPage() {
+        return mCurrentPage;
+    }
+
+    public void setAdapter(@Nullable CycleAdapter adapter) {
+        super.setAdapter(adapter);
+    }
+
+    @Deprecated
+    @Override
+    public void setAdapter(@Nullable Adapter adapter) {
+        super.setAdapter(adapter);
+    }
+
+    @Nullable
+    @Override
+    public CycleAdapter getAdapter() {
+        return super.getAdapter() instanceof CycleAdapter ? ((CycleAdapter) super.getAdapter()) : null;
     }
 
     @Override
@@ -85,6 +107,7 @@ public class CycleView extends RecyclerView {
     }
 
     public void dispatchOnPageSelected(int position) {
+        mCurrentPage = position;
         if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageSelected(position);
         }

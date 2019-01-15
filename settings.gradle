@@ -1,1 +1,1 @@
-include ':app', ':cyclebanner', ':indicator'
+include ':app', ':cyclebanner'
